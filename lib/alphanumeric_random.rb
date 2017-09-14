@@ -8,8 +8,8 @@ class AlphanumericRandom
   LOWERCASE = [*('a'..'z')]
   UPPERCASE = [*('A'..'Z')]
   HUMAN = BASE - HUMAN_EXCULUDE
-  LOWERCAE_ONLY = BASE - LOWERCASE
-  UPPERCAE_ONLY = BASE - UPPERCASE
+  LOWERCASE_ONLY = BASE - LOWERCASE
+  UPPERCASE_ONLY = BASE - UPPERCASE
 
   def self.generate(options = {})
     options = {
