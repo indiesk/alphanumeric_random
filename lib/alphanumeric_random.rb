@@ -4,10 +4,10 @@ class AlphanumericRandom
   include Singleton
 
   BASE = [*('A'..'Z')] + [*('a'..'z')] + [*('0'..'9')]
-  HUMAN_EXCULUDE = ['1', '0', 'O', 'l', 'I']
+  HUMAN_EXCLUDE = ['1', '0', 'O', 'l', 'I']
   LOWERCASE = [*('a'..'z')]
   UPPERCASE = [*('A'..'Z')]
-  HUMAN = BASE - HUMAN_EXCULUDE
+  HUMAN = BASE - HUMAN_EXCLUDE
   LOWERCASE_ONLY = BASE - LOWERCASE
   UPPERCASE_ONLY = BASE - UPPERCASE
 
