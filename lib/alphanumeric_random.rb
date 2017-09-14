@@ -5,13 +5,19 @@ class AlphanumericRandom
 
   BASE = [*('A'..'Z')] + [*('a'..'z')] + [*('0'..'9')]
   HUMAN_EXCULUDE = ['1', '0', 'O', 'l', 'I']
+  LOWERCASE = [*('a'..'z')]
+  UPPERCASE = [*('A'..'Z')]
   HUMAN = BASE - HUMAN_EXCULUDE
+  LOWERCAE_ONLY = BASE - LOWERCASE
+  UPPERCAE_ONLY = BASE - UPPERCASE
 
   def self.generate(options = {})
     options = {
       length: 8,
       unique: false,
       human: false,
+      lowercase: false,
+      uppercase: false,
       additional_chars: []
     }.merge!(options)
 
@@ -21,7 +27,14 @@ class AlphanumericRandom
     throw 'non boolean value for :human' unless [true, false].include?(options[:human])
     throw 'Array expected for :additional_chars' unless options[:additional_chars].kind_of?(Array)
 
-    chars = options[:human] ? HUMAN : BASE
+    if ( options[:lowercase] )
+      base_chars = LOWERCASE_ONLY
+    elsif ( options[:uppercase] )
+      base_chars = UPPERCASE_ONLY
+    else
+      base_chars = BASE
+    end
+    chars = options[:human] ? base_chars - HUMAN_EXCLUDE : base_chars
     chars += options[:additional_chars]
     chars = chars.uniq
 
